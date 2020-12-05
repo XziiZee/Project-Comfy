@@ -58,7 +58,7 @@ const ProjectComfy = () => {
             setUserInfo(data)
             setUserID(data.broadcaster_id)
           }).catch((e) => {
-            setUserError(`Something went wrong, please check user "${userToSearch}" exists`)
+            setUserSearchError(`Something went wrong, please check user "${userToSearch}" exists`)
           })
         }).catch()
       }}>
