@@ -41,7 +41,7 @@ const ProjectComfy = () => {
   const [userToSearch, setUserToSearch] = useState('')
   const [userInfo, setUserInfo] = useState()
   const [userID, setUserID] = useState('')
-  const [userError, setUserError] = useState('')
+  const [userSearchError, setUserSearchError] = useState('')
 
   return (
     <div>
@@ -66,7 +66,7 @@ const ProjectComfy = () => {
         <button>Search</button>
       </form>
       )}
-      {userError && <p>{userError}</p>}
+      {userSearchError && <p>{userSearchError}</p>}
       {userInfo && <p>Name: {userInfo.broadcaster_name}</p>}
       {userInfo && <p>Title: {userInfo.title}</p>}
       {userInfo && <p>Game: {userInfo.game_name}</p>}
