@@ -4,7 +4,11 @@ import { getUserID, getCursor, getStreamDataByID } from '../API-Calls'
 
 const SearchForm = () => {
   const { accessToken, userToSearch, setUserToSearch, setUserInfo, setUserID, setUserSearchError, setStreams, streams } = useContext(StreamsContext)
-
+    const pasteStreams = () => {
+      console.log(streams)
+      let index = streams.findIndex((stream) => userToSearch.toLowerCase() === stream.user_name.toLowerCase())
+      console.log(streams[index])
+    }
     return (
       <div>
         <form onSubmit={(e) => {
@@ -13,10 +17,10 @@ const SearchForm = () => {
             getStreamDataByID(accessToken, data).then((data) => {
               setUserInfo(data)
               setUserID(data.broadcaster_id)
-              const tempGameID = data.game_id
-              getCursor(accessToken, tempGameID, userToSearch).then((data) => {
+              getCursor(accessToken).then((data) => {
                 setStreams(data)
               })
+              
             }).catch((e) => {
               setUserSearchError(`Something went wrong, please check user "${userToSearch}" exists`)
             })
@@ -25,7 +29,7 @@ const SearchForm = () => {
           <input value={userToSearch} onChange={(e) => setUserToSearch(e.target.value)} placeholder='Search User' />
           <button>Search</button>
         </form>
-        <button onClick={() => console.log(streams)}>paste streams</button>
+        <button onClick={pasteStreams}>paste streams</button>
       </div>
      
   )
