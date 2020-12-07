@@ -6,7 +6,6 @@ const RenderInfoOfStream = () => {
 
     return (
         <div>
-            {streams && <p>{streams[0].user_name}</p>}
             {userSearchError && <p>{userSearchError}</p>}
             {userInfo && <p>Name: {userInfo.broadcaster_name}</p>}
             {userInfo && <p>Title: {userInfo.title}</p>}
