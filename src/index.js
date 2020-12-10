@@ -14,7 +14,7 @@ const ProjectComfy = () => {
   const [userInfo, setUserInfo] = useState()
   const [userID, setUserID] = useState('')
   const [userSearchError, setUserSearchError] = useState('')
-  const [streams, setStreams] = useState('')
+  const [streams, setStreams] = useState()
   const [accessToken, setAccessToken] = useState()
 
   useEffect(() => {

@@ -15,8 +15,8 @@ const getUserID = async (accessToken, userToSearch) => {
 }
 
 // Thank you Zae
-const getCursor = async (accessToken) => {
-  let calls = 1
+const getDataArray = async (accessToken, userToSearch) => {
+  let calls = 0
   let dataArray = []
   let data = false
   do {
@@ -36,16 +36,29 @@ const getCursor = async (accessToken) => {
     if (response.ok) {
       data = await response.json()
       dataArray = dataArray.concat(data.data)
+      calls++
+      console.log(calls)
       if (data.data[90].viewer_count < 100) {
         console.log('Done at 100 viewers')
         break
       }
-      console.log(calls)
-      calls++
     }
   } while (data && data.pagination && data.pagination.cursor)
   console.log('Done')
-  return dataArray
+  let index = dataArray.findIndex((stream) => userToSearch.toLowerCase() === stream.user_name.toLowerCase())
+  let highStreamsArray = []
+  let searchedStream = dataArray[index]
+  let lowStreamsArray = []
+  let lowEnd = index + 5
+  let highEnd = index - 5
+  for (let i = highEnd; i < index; i++) {
+    highStreamsArray.push(dataArray[i])
+  }
+  for (let i = index + 1; i <= lowEnd; i++) {
+    lowStreamsArray.push(dataArray[i])
+  }
+  const returnData = { highStreamsArray, searchedStream, lowStreamsArray }
+  return returnData
 }
   
 const getStreamDataByID = async (accessToken, userID) => {
@@ -62,4 +75,4 @@ const getStreamDataByID = async (accessToken, userID) => {
   }
 }
 
-  export { getUserID, getCursor, getStreamDataByID }
+  export { getUserID, getDataArray, getStreamDataByID }

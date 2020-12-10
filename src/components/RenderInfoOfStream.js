@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import StreamsContext from '../context/streams-context'
+import ChannelInfo from './ChannelInfo'
 
 const RenderInfoOfStream = () => {
-    const { streams, userSearchError, userInfo } = useContext(StreamsContext)
+    const { userSearchError, userInfo } = useContext(StreamsContext)
 
     return (
         <div>
@@ -10,6 +11,7 @@ const RenderInfoOfStream = () => {
             {userInfo && <p>Name: {userInfo.broadcaster_name}</p>}
             {userInfo && <p>Title: {userInfo.title}</p>}
             {userInfo && <p>Game: {userInfo.game_name}</p>}
+            <ChannelInfo />
         </div>
     ) 
 }
