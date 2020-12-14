@@ -51,6 +51,9 @@ const getDataArray = async (accessToken, userToSearch) => {
   let lowStreamsArray = []
   let lowEnd = indexOfSearchedStream + 5
   let highEnd = indexOfSearchedStream - 5
+  if (highEnd < 0) {
+    highEnd = 0
+  }
 
   for (let i = highEnd; i < indexOfSearchedStream; i++) {
     highStreamsArray.push(dataArray[i])
