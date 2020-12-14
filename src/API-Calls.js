@@ -45,18 +45,20 @@ const getDataArray = async (accessToken, userToSearch) => {
     }
   } while (data && data.pagination && data.pagination.cursor)
   console.log('Done')
-  let index = dataArray.findIndex((stream) => userToSearch.toLowerCase() === stream.user_name.toLowerCase())
+  let indexOfSearchedStream = dataArray.findIndex((stream) => userToSearch.toLowerCase() === stream.user_name.toLowerCase())
   let highStreamsArray = []
-  let searchedStream = dataArray[index]
+  let searchedStream = dataArray[indexOfSearchedStream]
   let lowStreamsArray = []
-  let lowEnd = index + 5
-  let highEnd = index - 5
-  for (let i = highEnd; i < index; i++) {
+  let lowEnd = indexOfSearchedStream + 5
+  let highEnd = indexOfSearchedStream - 5
+
+  for (let i = highEnd; i < indexOfSearchedStream; i++) {
     highStreamsArray.push(dataArray[i])
   }
-  for (let i = index + 1; i <= lowEnd; i++) {
+  for (let i = indexOfSearchedStream + 1; i <= lowEnd; i++) {
     lowStreamsArray.push(dataArray[i])
   }
+  
   const returnData = { highStreamsArray, searchedStream, lowStreamsArray }
   return returnData
 }

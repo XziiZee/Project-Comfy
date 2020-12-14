@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import StreamsContext from './context/streams-context'
 import SearchForm from './components/SearchForm'
 import LoginPage from './components/LoginPage'
-import RenderInfoOfStream from './components/RenderInfoOfStream'
+import ChannelInfo from './components/ChannelInfo'
 import Header from './components/Header'
 require('dotenv').config()
 
@@ -30,7 +30,7 @@ const ProjectComfy = () => {
       ) : (
         <SearchForm />
       )}
-      <RenderInfoOfStream />
+      {streams && <ChannelInfo />}
     </StreamsContext.Provider>
   )
 }
