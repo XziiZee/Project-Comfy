@@ -31,7 +31,6 @@ const ProjectComfy = () => {
         <SearchForm />
       )}
       {streams && <ChannelInfo />}
-      {streams && <p>{userSearchError}</p>}
     </StreamsContext.Provider>
   )
 }

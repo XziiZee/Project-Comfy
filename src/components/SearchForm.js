@@ -10,12 +10,12 @@ const SearchForm = () => {
         <form onSubmit={(e) => {
           e.preventDefault()
           setStreams()
-          setLoading(true)
           setUserSearchError('')
           getUserID(accessToken, userToSearch).then((data) => {
             getStreamDataByID(accessToken, data).then((data) => {
               setUserInfo(data)
               setUserID(data.broadcaster_id)
+              setLoading(true)
               getDataArray(accessToken, userToSearch).then((data) => {
                 setStreams(data)
                 setLoading(false)

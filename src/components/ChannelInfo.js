@@ -3,7 +3,7 @@ import StreamsContext from '../context/streams-context'
 import Stream from '../components/Stream'
 
 const ChannelInfo = () => {
-    const { streams } = useContext(StreamsContext)
+    const { streams, userToSearch } = useContext(StreamsContext)
     return (
         <>
             {streams.highStreamsArray[0] ? (
@@ -19,7 +19,7 @@ const ChannelInfo = () => {
                     </div>
                 </div>
             ) : (
-                <p>User Not Online</p>
+                <p><span>{userToSearch}</span> is not online</p>
             )}
             
         </>
