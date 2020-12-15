@@ -45,6 +45,7 @@ const getDataArray = async (accessToken, userToSearch) => {
     }
   } while (data && data.pagination && data.pagination.cursor)
   console.log('Done')
+  dataArray = dataArray.filter((data) => data.language === 'en')
   let indexOfSearchedStream = dataArray.findIndex((stream) => userToSearch.toLowerCase() === stream.user_name.toLowerCase())
   let highStreamsArray = []
   let searchedStream = dataArray[indexOfSearchedStream]
